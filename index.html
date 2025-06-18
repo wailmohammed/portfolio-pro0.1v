@@ -1,884 +1,43 @@
-<td>₮ USDT (TRC-20)</td>
-                                    <td>19.00 USDT<br><span style="font-size: 0.8rem; color: var(--text-secondary);">($19.00)</span></td>
-                                    <td>
-                                        <code style="font-size: 0.7rem;">9f8e7d6c5b4a...</code>
-                                        <button class="btn btn-secondary" style="padding: 2px 6px; font-size: 0.7rem; margin-left: 5px;" onclick="viewTransaction('9f8e7d6c5b4a')">View</button>
-                                    </td>
-                                    <td><span class="api-status api-connected">✅ Verified</span></td>
-                                    <td>1 day ago</td>
-                                    <td>
-                                        <span style="color: var(--success-color); font-size: 0.8rem;">✅ Activated</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div style="display: flex; align-items: center; gap: 8px;">
-                                            <div class="user-avatar" style="width: 24px; height: 24px; font-size: 0.7rem;">MJ</div>
-                                            <div>
-                                                <strong>mike.j@email.com</strong>
-                                                <div style="font-size: 0.8rem; color: var(--text-secondary);">ID: USR003</div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td><span class="role-indicator role-admin">Enterprise</span></td>
-                                    <td>⟠ Ethereum</td>
-                                    <td>0.078 ETH<br><span style="font-size: 0.8rem; color: var(--text-secondary);">($199.00)</span></td>
-                                    <td>
-                                        <code style="font-size: 0.7rem;">0x1a2b3c4d5e...</code>
-                                        <button class="btn btn-secondary" style="padding: 2px 6px; font-size: 0.7rem; margin-left: 5px;" onclick="viewTransaction('0x1a2b3c4d5e')">View</button>
-                                    </td>
-                                    <td><span class="api-status api-pending">🤖 Auto-Verifying</span></td>
-                                    <td>30 min ago</td>
-                                    <td>
-                                        <div style="color: var(--warning-color); font-size: 0.8rem;">⏳ 2/3 confirmations</div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div style="display: flex; align-items: center; gap: 8px;">
-                                            <div class="user-avatar" style="width: 24px; height: 24px; font-size: 0.7rem;">AL</div>
-                                            <div>
-                                                <strong>alice.l@email.com</strong>
-                                                <div style="font-size: 0.8rem; color: var(--text-secondary);">ID: USR004</div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td><span class="role-indicator role-user">Premium</span></td>
-                                    <td>◉ Solana</td>
-                                    <td>0.95 SOL<br><span style="font-size: 0.8rem; color: var(--text-secondary);">($19.00)</span></td>
-                                    <td>
-                                        <code style="font-size: 0.7rem;">5KJp9UX2eVs...</code>
-                                        <button class="btn btn-secondary" style="padding: 2px 6px; font-size: 0.7rem; margin-left: 5px;" onclick="viewTransaction('5KJp9UX2eVs')">View</button>
-                                    </td>
-                                    <td><span class="api-status api-disconnected">❌ Failed</span></td>
-                                    <td>3 days ago</td>
-                                    <td>
-                                        <button class="btn btn-secondary" style="padding: 4px 8px; font-size: 0.7rem;" onclick="reviewFailedTransaction('tx004')">🔍 Review</button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <!-- Auto-Verification Settings -->
-                    <div style="margin-top: 30px; background: rgba(99, 102, 241, 0.05); border-radius: 15px; padding: 25px; border: 1px solid rgba(99, 102, 241, 0.2);">
-                        <h3 style="margin-bottom: 20px; color: var(--primary-color);">🤖 Auto-Verification Settings</h3>
-                        
-                        <div class="dashboard-grid">
-                            <div class="metric-card">
-                                <div class="metric-value">Active</div>
-                                <button class="btn btn-primary" style="margin-top: 10px; font-size: 0.8rem;" onclick="testAutoVerification()">
-                                    Test Auto-Verify
-                                </button>
-                            </div>
-
-                            <div class="metric-card">
-                                <div class="metric-header">
-                                    <span class="metric-title">Subscription Activation</span>
-                                    <span class="metric-icon">✅</span>
-                                </div>
-                                <div class="metric-value">Ready</div>
-                                <button class="btn btn-primary" style="margin-top: 10px; font-size: 0.8rem;" onclick="testSubscriptionActivation()">
-                                    Test Activation
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </main>
-    </div>
-
-    <!-- Demo Mode Indicator -->
-    <div class="demo-mode" id="demoIndicator" style="display: none;">
-        🧪 DEMO MODE ACTIVE
-    </div>
-
-    <!-- Modals -->
-    <div id="modal-overlay" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title" id="modal-title">Modal Title</h3>
-                <button class="close-btn" onclick="closeModal()">&times;</button>
-            </div>
-            <div id="modal-body">
-                <!-- Modal content will be populated dynamically -->
-            </div>
+<!-- Add this section to your index.html file -->
+<section id="transactions-section" class="content-section">
+    <div class="section-header">
+        <h2>Crypto Transactions</h2>
+        <div class="section-actions">
+            <button class="btn btn-primary" onclick="testAutoVerification()">Test Auto-Verification</button>
+            <button class="btn btn-secondary" onclick="exportTransactions()">Export</button>
         </div>
     </div>
-
-    <!-- Notification -->
-    <div id="notification" class="notification">
-        <span id="notification-text">Action completed successfully!</span>
+    
+    <div class="filter-bar">
+        <div class="filter-group">
+            <label>Status:</label>
+            <select onchange="filterTransactions(this.value)">
+                <option value="all">All</option>
+                <option value="verified">Verified</option>
+                <option value="pending">Pending</option>
+                <option value="failed">Failed</option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <label>Crypto:</label>
+            <select onchange="filterTransactions(this.value)">
+                <option value="all">All</option>
+                <option value="BTC">Bitcoin</option>
+                <option value="ETH">Ethereum</option>
+                <option value="USDT">USDT</option>
+                <option value="SOL">Solana</option>
+            </select>
+        </div>
+        <div class="search-box">
+            <input type="text" placeholder="Search transactions...">
+            <button class="search-btn">🔍</button>
+        </div>
     </div>
-
-    <script>
-        // Global state
-        let currentSection = 'overview';
-        let isAuthenticated = false;
-        let selectedCrypto = null;
-        let currentUser = {
-            name: 'John Doe',
-            email: 'john.doe@email.com',
-            plan: 'pro',
-            mfaEnabled: true,
-            securityScore: 98
-        };
-
-        // Crypto configuration
-    const cryptoConfig = {
-    BTC: {
-        wallet: 'YOUR_BITCOIN_WALLET_ADDRESS_HERE',  // Replace with your BTC address
-        confirmations: 3
-    },
-    ETH: {
-        wallet: 'YOUR_ETHEREUM_WALLET_ADDRESS_HERE',  // Replace with your ETH address
-        confirmations: 12
-    },
-    USDT: {
-        wallet: 'YOUR_USDT_TRC20_ADDRESS_HERE',      // Replace with your USDT address
-        confirmations: 1
-    }
-    // Add your other wallet addresses
-};
-        // Cryptocurrency functions
-        function selectCrypto(crypto) {
-            selectedCrypto = crypto;
-            
-            // Remove selection from other cards
-            document.querySelectorAll('.crypto-card').forEach(card => {
-                card.style.border = '1px solid var(--border-color)';
-                card.style.background = 'var(--bg-card)';
-            });
-            
-            // Highlight selected card
-            const selectedCard = document.querySelector(`[data-crypto="${crypto}"]`);
-            selectedCard.style.border = '2px solid var(--primary-color)';
-            selectedCard.style.background = 'rgba(99, 102, 241, 0.1)';
-            
-            // Update payment form
-            const config = cryptoConfig[crypto];
-            document.getElementById('selectedCryptoIcon').textContent = config.icon;
-            document.getElementById('selectedCryptoName').textContent = config.name;
-            document.getElementById('cryptoSymbol').textContent = config.symbol;
-            document.getElementById('cryptoSymbol2').textContent = config.symbol;
-            document.getElementById('walletAddress').value = config.wallet;
-            
-            // Show payment form
-            document.getElementById('paymentForm').style.display = 'block';
-            document.getElementById('paymentForm').scrollIntoView({ behavior: 'smooth' });
-            
-            showNotification(`${config.name} selected. Choose your plan below.`, 'success');
-        }
-
-        function updatePaymentAmount() {
-            const planSelect = document.getElementById('planSelect');
-            const selectedOption = planSelect.options[planSelect.selectedIndex];
-            
-            if (!selectedOption.value || !selectedCrypto) return;
-            
-            const planName = selectedOption.text;
-            const usdAmount = parseFloat(selectedOption.dataset.price);
-            const config = cryptoConfig[selectedCrypto];
-            const cryptoAmount = usdAmount * config.rate;
-            
-            document.getElementById('selectedPlan').textContent = planName;
-            document.getElementById('usdAmount').textContent = `${usdAmount.toFixed(2)}`;
-            document.getElementById('cryptoAmount').textContent = `${cryptoAmount.toFixed(6)} ${config.symbol}`;
-            
-            document.getElementById('paymentDetails').style.display = 'block';
-        }
-
-        function copyWalletAddress() {
-            const walletInput = document.getElementById('walletAddress');
-            walletInput.select();
-            document.execCommand('copy');
-            showNotification('Wallet address copied to clipboard!', 'success');
-        }
-
-        function submitPayment() {
-            const txId = document.getElementById('txId').value.trim();
-            const email = document.getElementById('userEmail').value.trim();
-            const plan = document.getElementById('planSelect').value;
-            
-            if (!txId || !email || !plan || !selectedCrypto) {
-                showNotification('Please fill in all required fields', 'error');
-                return;
-            }
-            
-            // Simulate payment submission
-            showNotification('Submitting payment verification...', 'success');
-            
-            setTimeout(() => {
-                // Simulate saving transaction
-                const transaction = {
-                    id: 'tx_' + Date.now(),
-                    user: email,
-                    plan: plan,
-                    crypto: selectedCrypto,
-                    txId: txId,
-                    amount: document.getElementById('cryptoAmount').textContent,
-                    usdAmount: document.getElementById('usdAmount').textContent,
-                    status: 'pending',
-                    timestamp: new Date().toISOString()
-                };
-                
-                // Store in localStorage for demo
-                const transactions = JSON.parse(localStorage.getItem('crypto_transactions') || '[]');
-                transactions.push(transaction);
-                localStorage.setItem('crypto_transactions', JSON.stringify(transactions));
-                
-                showNotification('Payment submitted successfully! Admin will verify within 24 hours.', 'success');
-                
-                // Reset form
-                document.getElementById('paymentForm').style.display = 'none';
-                selectedCrypto = null;
-                document.querySelectorAll('.crypto-card').forEach(card => {
-                    card.style.border = '1px solid var(--border-color)';
-                    card.style.background = 'var(--bg-card)';
-                });
-            }, 2000);
-        }
-
-        // Admin functions
-        function editWallet(crypto) {
-            const config = cryptoConfig[crypto];
-            showModal('edit-wallet');
-            
-            document.getElementById('modal-title').textContent = `Edit ${config.name} Wallet`;
-            document.getElementById('modal-body').innerHTML = `
-                <div class="form-group">
-                    <label class="form-label">Cryptocurrency</label>
-                    <input type="text" class="form-input" value="${config.name}" readonly>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Network</label>
-                    <input type="text" class="form-input" value="${config.network}" readonly>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Wallet Address</label>
-                    <input type="text" class="form-input" value="${config.wallet}" id="editWalletAddress">
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Required Confirmations</label>
-                    <input type="number" class="form-input" value="${config.confirmations}" min="1" max="20">
-                </div>
-                <div style="display: flex; gap: 10px; margin-top: 20px;">
-                    <button class="btn btn-secondary" style="flex: 1;" onclick="closeModal()">Cancel</button>
-                    <button class="btn btn-primary" style="flex: 1;" onclick="saveWallet('${crypto}')">Save Wallet</button>
-                </div>
-            `;
-        }
-
-        function saveWallet(crypto) {
-            const address = document.getElementById('editWalletAddress').value.trim();
-            if (!address) {
-                showNotification('Please enter a valid wallet address', 'error');
-                return;
-            }
-            
-            // Update configuration
-            cryptoConfig[crypto].wallet = address;
-            
-            showNotification(`${cryptoConfig[crypto].name} wallet updated successfully!`, 'success');
-            closeModal();
-            
-            // Refresh wallet table
-            updateWalletTable();
-        }
-
-        function validateAllWallets() {
-            showNotification('Validating all wallet addresses...', 'success');
-            
-            setTimeout(() => {
-                showNotification('✅ All wallet addresses validated successfully!', 'success');
-            }, 3000);
-        }
-
-        function updateWalletTable() {
-            // Update wallet table with current configuration
-            const tbody = document.getElementById('walletTableBody');
-            if (tbody) {
-                // This would update the table with current wallet data
-                showNotification('Wallet table updated', 'success');
-            }
-        }
-
-        // Transaction management
-        function verifyTransaction(txId) {
-            showNotification(`Verifying transaction ${txId}...`, 'success');
-            
-            setTimeout(() => {
-                // Simulate verification process
-                showNotification('✅ Transaction verified! User subscription activated.', 'success');
-                
-                // Update transaction status in UI
-                updateTransactionStatus(txId, 'verified');
-            }, 2000);
-        }
-
-        function rejectTransaction(txId) {
-            const reason = prompt('Enter rejection reason:');
-            if (!reason) return;
-            
-            showNotification(`Rejecting transaction ${txId}...`, 'warning');
-            
-            setTimeout(() => {
-                showNotification(`❌ Transaction rejected: ${reason}`, 'error');
-                updateTransactionStatus(txId, 'rejected');
-            }, 1500);
-        }
-
-        function updateTransactionStatus(txId, status) {
-            // Update transaction status in localStorage and UI
-            const transactions = JSON.parse(localStorage.getItem('crypto_transactions') || '[]');
-            const transaction = transactions.find(t => t.id === txId);
-            if (transaction) {
-                transaction.status = status;
-                localStorage.setItem('crypto_transactions', JSON.stringify(transactions));
-            }
-        }
-
-        function viewTransaction(txHash) {
-            showNotification(`Opening blockchain explorer for ${txHash}...`, 'success');
-            
-            // In a real implementation, this would open the blockchain explorer
-            setTimeout(() => {
-                showNotification('Transaction details loaded from blockchain', 'success');
-            }, 1000);
-        }
-
-        function filterTransactions(filter) {
-            showNotification(`Filtering transactions: ${filter}`, 'success');
-            // This would filter the transactions table
-        }
-
-        function exportTransactions() {
-            const transactions = JSON.parse(localStorage.getItem('crypto_transactions') || '[]');
-            const csv = convertToCSV(transactions);
-            downloadFile(csv, 'crypto-transactions.csv', 'text/csv');
-            showNotification('Transactions exported successfully!', 'success');
-        }
-
-        function refreshTransactions() {
-            showNotification('Refreshing transaction data...', 'success');
-            
-            setTimeout(() => {
-                showNotification('Transaction data refreshed from blockchain', 'success');
-            }, 1500);
-        }
-
-        function saveAutoVerificationSettings() {
-            showNotification('Saving auto-verification settings...', 'success');
-            
-            setTimeout(() => {
-                showNotification('✅ Auto-verification settings saved successfully!', 'success');
-            }, 1000);
-        }
-
-        // Testing functions
-        function testCryptoPayment() {
-            showNotification('Starting crypto payment test...', 'success');
-            
-            setTimeout(() => {
-                selectCrypto('BTC');
-                document.getElementById('planSelect').value = 'pro';
-                updatePaymentAmount();
-                showNotification('📱 Test payment form loaded with Bitcoin', 'success');
-            }, 1000);
-        }
-
-        function testAdminVerification() {
-            showNotification('Testing admin verification panel...', 'success');
-            
-            setTimeout(() => {
-                showSection('transactions');
-                showNotification('👨‍💼 Admin transaction panel loaded', 'success');
-            }, 1000);
-        }
-
-        function testAutoVerification() {
-            showNotification('Testing auto-verification system...', 'success');
-            
-            setTimeout(() => {
-                showNotification('🤖 Auto-verification: Checking blockchain...', 'warning');
-            }, 1000);
-            
-            setTimeout(() => {
-                showNotification('✅ Auto-verification complete! Transaction confirmed.', 'success');
-            }, 3000);
-        }
-
-        function testSubscriptionActivation() {
-            showNotification('Testing subscription activation...', 'success');
-            
-            setTimeout(() => {
-                showNotification('🎉 Subscription activated! Pro features unlocked.', 'success');
-                
-                // Update UI to show activated subscription
-                document.querySelector('.plan-badge').textContent = 'PRO PLAN ACTIVE';
-                document.querySelector('.plan-badge').style.background = 'var(--success-color)';
-            }, 2000);
-        }
-
-        // Security & Authentication
-        function showLogin() {
-            document.getElementById('authOverlay').classList.add('show');
-        }
-
-        function hideLogin() {
-            document.getElementById('authOverlay').classList.remove('show');
-        }
-
-        // Handle login form submission
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            showNotification('Verifying credentials...', 'success');
-            
-            setTimeout(() => {
-                document.getElementById('loginForm').style.display = 'none';
-                document.getElementById('mfaContainer').style.display = 'block';
-                showNotification('Enter your 2FA code', 'warning');
-            }, 1500);
-        });
-
-        // MFA digit input handling
-        document.querySelectorAll('.mfa-digit').forEach((input, index) => {
-            input.addEventListener('input', function(e) {
-                if (e.target.value.length === 1 && index < 5) {
-                    document.querySelectorAll('.mfa-digit')[index + 1].focus();
-                }
-            });
-            
-            input.addEventListener('keydown', function(e) {
-                if (e.key === 'Backspace' && e.target.value === '' && index > 0) {
-                    document.querySelectorAll('.mfa-digit')[index - 1].focus();
-                }
-            });
-        });
-
-        function verifyMFA() {
-            const digits = Array.from(document.querySelectorAll('.mfa-digit')).map(input => input.value);
-            const code = digits.join('');
-            
-            if (code.length === 6) {
-                showNotification('Verifying 2FA code...', 'success');
-                
-                setTimeout(() => {
-                    isAuthenticated = true;
-                    hideLogin();
-                    showNotification('Login successful! Welcome back.', 'success');
-                    logSecurityEvent('Successful login with 2FA');
-                }, 1500);
-            } else {
-                showNotification('Please enter all 6 digits', 'error');
-            }
-        }
-
-        // Security event logging
-        function logSecurityEvent(action, ip = '192.168.1.100') {
-            const timestamp = new Date().toLocaleString();
-            console.log(`[SECURITY LOG] ${timestamp}: ${action} from ${ip}`);
-        }
-
-        // Navigation
-        function showSection(sectionName) {
-            document.querySelectorAll('.content-section').forEach(section => {
-                section.style.display = 'none';
-            });
-
-            document.querySelectorAll('.nav-item').forEach(item => {
-                item.classList.remove('active');
-            });
-
-            const section = document.getElementById(sectionName + '-section');
-            if (section) {
-                section.style.display = 'block';
-                section.classList.add('fade-in');
-            }
-
-            if (event && event.target) {
-                event.target.closest('.nav-item').classList.add('active');
-            }
-
-            const titles = {
-                'overview': 'Portfolio Overview',
-                'portfolio': 'Portfolio Holdings',
-                'analytics': 'Advanced Analytics',
-                'risk-monitor': 'Risk Monitoring',
-                'schedule': 'Investment Schedule',
-                'automation': 'Investment Automation',
-                'compound-growth': 'Compound Growth Modeling',
-                'brokers': 'Broker API Integration',
-                'import-export': 'Data Import/Export',
-                'user-management': 'User Management',
-                'security': 'Security Center',
-                'audit': 'Security Audit Trail',
-                'plans': 'Plans & Billing',
-                'crypto-payments': 'Crypto Payment Gateway',
-                'admin-wallet': 'Admin Wallet Management',
-                'transactions': 'Transaction Management',
-                'testing': 'Testing Guide'
-            };
-
-            document.getElementById('pageTitle').textContent = titles[sectionName] || 'Portfolio Pro';
-            currentSection = sectionName;
-        }
-
-        // Sidebar toggle
-        function toggleSidebar() {
-            const sidebar = document.getElementById('sidebar');
-            const mainContent = document.getElementById('mainContent');
-            
-            sidebar.classList.toggle('collapsed');
-            mainContent.classList.toggle('expanded');
-        }
-
-        // Modal management
-        function showModal(modalType, planType = null) {
-            const modal = document.getElementById('modal-overlay');
-            const title = document.getElementById('modal-title');
-            const body = document.getElementById('modal-body');
-
-            switch(modalType) {
-                case 'add-wallet':
-                    title.textContent = 'Add New Wallet';
-                    body.innerHTML = `
-                        <div class="form-group">
-                            <label class="form-label">Cryptocurrency</label>
-                            <select class="form-select" id="newWalletCrypto">
-                                <option value="">Select cryptocurrency</option>
-                                <option value="BTC">Bitcoin (BTC)</option>
-                                <option value="ETH">Ethereum (ETH)</option>
-                                <option value="USDT">Tether USDT (TRC-20)</option>
-                                <option value="BNB">Binance Coin (BNB)</option>
-                                <option value="XRP">Ripple (XRP)</option>
-                                <option value="SOL">Solana (SOL)</option>
-                                <option value="SUI">Sui Network (SUI)</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Wallet Address</label>
-                            <input type="text" class="form-input" id="newWalletAddress" placeholder="Enter wallet address">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Required Confirmations</label>
-                            <input type="number" class="form-input" value="3" min="1" max="20">
-                        </div>
-                        <div style="display: flex; gap: 10px; margin-top: 20px;">
-                            <button class="btn btn-secondary" style="flex: 1;" onclick="closeModal()">Cancel</button>
-                            <button class="btn btn-primary" style="flex: 1;" onclick="addNewWallet()">Add Wallet</button>
-                        </div>
-                    `;
-                    break;
-
-                case 'traditional-payment':
-                    title.textContent = `Upgrade to ${planType} Plan`;
-                    body.innerHTML = `
-                        <div style="text-align: center; margin-bottom: 20px;">
-                            <p>Traditional payment methods coming soon!</p>
-                            <p style="color: var(--text-secondary); margin-top: 10px;">
-                                For now, please use our secure crypto payment option.
-                            </p>
-                        </div>
-                        <div style="display: flex; gap: 10px; margin-top: 20px;">
-                            <button class="btn btn-secondary" style="flex: 1;" onclick="closeModal()">Cancel</button>
-                            <button class="btn btn-primary" style="flex: 1;" onclick="closeModal(); showSection('crypto-payments')">
-                                ₿ Pay with Crypto
-                            </button>
-                        </div>
-                    `;
-                    break;
-
-                case 'contact-sales':
-                    title.textContent = 'Contact Enterprise Sales';
-                    body.innerHTML = `
-                        <div class="form-group">
-                            <label class="form-label">Company Name</label>
-                            <input type="text" class="form-input" placeholder="Your company name">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Contact Email</label>
-                            <input type="email" class="form-input" placeholder="your@company.com">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Number of Users</label>
-                            <select class="form-select">
-                                <option value="">Select range</option>
-                                <option value="10-50">10-50 users</option>
-                                <option value="50-100">50-100 users</option>
-                                <option value="100-500">100-500 users</option>
-                                <option value="500+">500+ users</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Message</label>
-                            <textarea class="form-input" rows="4" placeholder="Tell us about your requirements..."></textarea>
-                        </div>
-                        <div style="display: flex; gap: 10px; margin-top: 20px;">
-                            <button class="btn btn-secondary" style="flex: 1;" onclick="closeModal()">Cancel</button>
-                            <button class="btn btn-primary" style="flex: 1;" onclick="submitSalesContact()">Send Message</button>
-                        </div>
-                    `;
-                    break;
-            }
-
-            modal.classList.add('show');
-        }
-
-        function closeModal() {
-            document.getElementById('modal-overlay').classList.remove('show');
-        }
-
-        function addNewWallet() {
-            const crypto = document.getElementById('newWalletCrypto').value;
-            const address = document.getElementById('newWalletAddress').value.trim();
-            
-            if (!crypto || !address) {
-                showNotification('Please fill in all fields', 'error');
-                return;
-            }
-            
-            showNotification(`Adding ${cryptoConfig[crypto].name} wallet...`, 'success');
-            
-            setTimeout(() => {
-                cryptoConfig[crypto].wallet = address;
-                showNotification('✅ Wallet added successfully!', 'success');
-                closeModal();
-                updateWalletTable();
-            }, 1500);
-        }
-
-        function submitSalesContact() {
-            showNotification('Sending message to sales team...', 'success');
-            
-            setTimeout(() => {
-                showNotification('✅ Message sent! Our sales team will contact you within 24 hours.', 'success');
-                closeModal();
-            }, 2000);
-        }
-
-        // Notification system
-        function showNotification(message, type = 'success') {
-            const notification = document.getElementById('notification');
-            const text = document.getElementById('notification-text');
-            
-            text.textContent = message;
-            notification.className = `notification show ${type}`;
-            
-            setTimeout(() => {
-                notification.classList.remove('show');
-            }, 4000);
-        }
-
-        // Utility functions
-        function convertToCSV(data) {
-            if (!data || !data.length) return '';
-            
-            const headers = Object.keys(data[0]);
-            const csvContent = [
-                headers.join(','),
-                ...data.map(row => headers.map(header => row[header]).join(','))
-            ].join('\n');
-            
-            return csvContent;
-        }
-
-        function downloadFile(content, filename, contentType) {
-            const blob = new Blob([content], { type: contentType });
-            const url = URL.createObjectURL(blob);
-            
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = filename;
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            
-            URL.revokeObjectURL(url);
-        }
-
-        // User menu
-        function showUserMenu() {
-            console.log('User menu clicked');
-        }
-
-        // Initialize the application
-        document.addEventListener('DOMContentLoaded', function() {
-            if (!isAuthenticated) {
-                setTimeout(() => {
-                    showLogin();
-                }, 1000);
-            }
-            
-            showSection('overview');
-            
-            // Initialize crypto rates (in production, fetch from API)
-            updateCryptoRates();
-            
-            // Start security monitoring
-            startSecurityMonitoring();
-            
-            // Setup keyboard shortcuts
-            setupKeyboardShortcuts();
-            
-            console.log('Portfolio Pro initialized with crypto payment system!');
-        });
-
-        function updateCryptoRates() {
-            // In production, this would fetch real-time rates from CoinGecko/CoinMarketCap
-            // For demo, we use static rates
-            console.log('Crypto rates updated');
-        }
-
-        function startSecurityMonitoring() {
-            setInterval(() => {
-                logSecurityEvent('Automated security scan completed');
-            }, 300000);
-            
-            setInterval(() => {
-                if (Math.random() < 0.01) {
-                    showNotification('🔒 Security check completed - all systems secure', 'success');
-                }
-            }, 60000);
-        }
-
-        function setupKeyboardShortcuts() {
-            document.addEventListener('keydown', function(e) {
-                if (e.ctrlKey || e.metaKey) {
-                    switch(e.key) {
-                        case '1':
-                            e.preventDefault();
-                            showSection('overview');
-                            break;
-                        case '2':
-                            e.preventDefault();
-                            showSection('portfolio');
-                            break;
-                        case '3':
-                            e.preventDefault();
-                            showSection('analytics');
-                            break;
-                        case '4':
-                            e.preventDefault();
-                            showSection('risk-monitor');
-                            break;
-                        case 's':
-                            e.preventDefault();
-                            showSection('security');
-                            break;
-                        case 'p':
-                            e.preventDefault();
-                            showSection('crypto-payments');
-                            break;
-                        case 't':
-                            e.preventDefault();
-                            showSection('testing');
-                            break;
-                    }
-                }
-                
-                if (e.key === 'Escape') {
-                    closeModal();
-                }
-            });
-        }
-
-        // Demo auto-start
-        setTimeout(() => {
-            if (window.location.hash === '#demo') {
-                hideLogin();
-                isAuthenticated = true;
-                document.getElementById('demoIndicator').style.display = 'block';
-                showNotification('🚀 Demo mode activated! All features unlocked including crypto payments.', 'success');
-            }
-        }, 1000);
-    </script>
-</body>
-</html>-header">
-                                    <span class="metric-title">Required Confirmations</span>
-                                    <span class="metric-icon">🔗</span>
-                                </div>
-                                <div style="display: flex; align-items: center; gap: 10px; margin-top: 10px;">
-                                    <input type="number" class="form-input" value="3" min="1" max="10" style="width: 80px;">
-                                    <span style="font-size: 0.9rem; color: var(--text-secondary);">blocks</span>
-                                </div>
-                            </div>
-
-                            <div class="metric-card">
-                                <div class="metric-header">
-                                    <span class="metric-title">Auto-Verify Below</span>
-                                    <span class="metric-icon">💰</span>
-                                </div>
-                                <div style="display: flex; align-items: center; gap: 10px; margin-top: 10px;">
-                                    <span>$</span>
-                                    <input type="number" class="form-input" value="100" min="0" step="10" style="width: 100px;">
-                                    <span style="font-size: 0.9rem; color: var(--text-secondary);">USD</span>
-                                </div>
-                            </div>
-
-                            <div class="metric-card">
-                                <div class="metric-header">
-                                    <span class="metric-title">Verification Timeout</span>
-                                    <span class="metric-icon">⏰</span>
-                                </div>
-                                <div style="display: flex; align-items: center; gap: 10px; margin-top: 10px;">
-                                    <input type="number" class="form-input" value="24" min="1" max="168" style="width: 80px;">
-                                    <span style="font-size: 0.9rem; color: var(--text-secondary);">hours</span>
-                                </div>
-                            </div>
-
-                            <div class="metric-card">
-                                <div class="metric-header">
-                                    <span class="metric-title">Webhook Notifications</span>
-                                    <span class="metric-icon">🔔</span>
-                                </div>
-                                <div style="margin-top: 10px;">
-                                    <label style="display: flex; align-items: center; gap: 10px;">
-                                        <input type="checkbox" checked>
-                                        <span style="font-size: 0.9rem;">Enable webhooks</span>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div style="margin-top: 20px; text-align: center;">
-                            <button class="btn btn-primary" onclick="saveAutoVerificationSettings()">
-                                💾 Save Settings
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Plans & Billing Section (Updated with Crypto) -->
-            <section id="plans-section" class="content-section" style="display: none;">
-                <div class="testing-container">
-                    <div class="testing-header">
-                        <h2 class="testing-title">💎 Choose Your Plan</h2>
-                        <p style="color: var(--text-secondary); text-align: center;">
-                            Pay with crypto or traditional methods - Fast, secure, and flexible
-                        </p>
-                    </div>
-
-                    <div class="plans-container">
-                        <!-- Free Plan -->
-                        <div class="plan-card">
-                            <div class="plan-header">
-                                <h3 class="plan-name">Free</h3>
-                                <div class="plan-price">
-                                    <span class="currency">$</span>0
-                                    <span class="period">/month</span>
-                                </div>
-                                <p class="plan-description">Perfect for getting started with basic portfolio tracking</p>
-                            </div>
-
-                            <ul class="plan-features">
-                                <li><span class="feature-icon">✅</span> Up to 10 holdings</li>
-                                <li><span class="feature-icon">✅</span> Basic portfolio analytics</li>
-                                <li><span class="feature-icon">✅</span> Manual data entry</li>
-                                <li><span class="feature-icon">✅</span> Standard security</li>
+    
+    <div id="transactions-container">
+        <!-- Transactions will be loaded here dynamically -->
+    </div>
+</section>
                                 <li><span class="feature-icon">✅</span> Community support</li>
                                 <li class="feature-unavailable"><span class="feature-icon">❌</span> Real-time data</li>
                                 <li class="feature-unavailable"><span class="feature-icon">❌</span> Broker API connections</li>
@@ -912,14 +71,9 @@
                                 <li class="feature-unavailable"><span class="feature-icon">❌</span> Multi-user access</li>
                             </ul>
 
-                            <div style="display: flex; gap: 10px;">
-                                <button class="btn btn-primary" style="flex: 1; background: var(--premium-gradient); color: #1f2937;" onclick="showModal('traditional-payment', 'premium')">
-                                    💳 Pay with Card
-                                </button>
-                                <button class="btn btn-secondary" style="flex: 1;" onclick="showSection('crypto-payments')">
-                                    ₿ Pay with Crypto
-                                </button>
-                            </div>
+                            <button class="btn btn-primary btn-plan" style="background: var(--premium-gradient); color: #1f2937;">
+                                Upgrade to Premium
+                            </button>
                         </div>
 
                         <!-- Pro Plan -->
@@ -944,14 +98,9 @@
                                 <li><span class="feature-icon">✅</span> API access</li>
                             </ul>
 
-                            <div style="display: flex; gap: 10px;">
-                                <button class="btn btn-primary" style="flex: 1; background: var(--pro-gradient);" onclick="showModal('traditional-payment', 'pro')">
-                                    💳 Start Pro Trial
-                                </button>
-                                <button class="btn btn-secondary" style="flex: 1;" onclick="showSection('crypto-payments')">
-                                    ₿ Pay with Crypto
-                                </button>
-                            </div>
+                            <button class="btn btn-primary btn-plan" style="background: var(--pro-gradient);">
+                                Start Pro Trial
+                            </button>
                         </div>
 
                         <!-- Enterprise Plan -->
@@ -976,169 +125,68 @@
                                 <li><span class="feature-icon">✅</span> SLA guarantee</li>
                             </ul>
 
-                            <div style="display: flex; gap: 10px;">
-                                <button class="btn btn-primary" style="flex: 1; background: var(--enterprise-gradient);" onclick="showModal('contact-sales')">
-                                    📞 Contact Sales
-                                </button>
-                                <button class="btn btn-secondary" style="flex: 1;" onclick="showSection('crypto-payments')">
-                                    ₿ Pay with Crypto
-                                </button>
-                            </div>
+                            <button class="btn btn-primary btn-plan" style="background: var(--enterprise-gradient);">
+                                Contact Sales
+                            </button>
                         </div>
                     </div>
 
-                    <!-- Crypto Payment Benefits -->
-                    <div style="margin-top: 40px; background: rgba(34, 197, 94, 0.05); border-radius: 15px; padding: 25px; border: 1px solid rgba(34, 197, 94, 0.2);">
-                        <h3 style="margin-bottom: 20px; color: var(--success-color); text-align: center;">₿ Why Pay with Cryptocurrency?</h3>
-                        
-                        <div class="dashboard-grid">
-                            <div style="text-align: center; padding: 15px;">
-                                <div style="font-size: 2rem; margin-bottom: 10px;">🔒</div>
-                                <h4 style="margin-bottom: 8px;">Enhanced Privacy</h4>
-                                <p style="color: var(--text-secondary); font-size: 0.9rem;">No personal banking information required</p>
-                            </div>
-                            <div style="text-align: center; padding: 15px;">
-                                <div style="font-size: 2rem; margin-bottom: 10px;">⚡</div>
-                                <h4 style="margin-bottom: 8px;">Instant Processing</h4>
-                                <p style="color: var(--text-secondary); font-size: 0.9rem;">Faster than traditional bank transfers</p>
-                            </div>
-                            <div style="text-align: center; padding: 15px;">
-                                <div style="font-size: 2rem; margin-bottom: 10px;">🌍</div>
-                                <h4 style="margin-bottom: 8px;">Global Access</h4>
-                                <p style="color: var(--text-secondary); font-size: 0.9rem;">Available worldwide, no geographic restrictions</p>
-                            </div>
-                            <div style="text-align: center; padding: 15px;">
-                                <div style="font-size: 2rem; margin-bottom: 10px;">💰</div>
-                                <h4 style="margin-bottom: 8px;">Lower Fees</h4>
-                                <p style="color: var(--text-secondary); font-size: 0.9rem;">Reduced transaction costs compared to cards</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Supported Cryptocurrencies -->
-                    <div style="margin-top: 25px; background: rgba(255, 255, 255, 0.02); border-radius: 15px; padding: 25px;">
-                        <h3 style="margin-bottom: 20px; color: var(--primary-color); text-align: center;">🪙 Supported Cryptocurrencies</h3>
-                        
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px;">
-                            <div style="text-align: center; padding: 15px; background: rgba(255, 255, 255, 0.05); border-radius: 10px;">
-                                <div style="font-size: 2rem; margin-bottom: 8px;">₿</div>
-                                <div style="font-weight: 600;">Bitcoin</div>
-                                <div style="color: var(--text-secondary); font-size: 0.8rem;">Native BTC</div>
-                            </div>
-                            <div style="text-align: center; padding: 15px; background: rgba(255, 255, 255, 0.05); border-radius: 10px;">
-                                <div style="font-size: 2rem; margin-bottom: 8px;">⟠</div>
-                                <div style="font-weight: 600;">Ethereum</div>
-                                <div style="color: var(--text-secondary); font-size: 0.8rem;">ETH Network</div>
-                            </div>
-                            <div style="text-align: center; padding: 15px; background: rgba(255, 255, 255, 0.05); border-radius: 10px;">
-                                <div style="font-size: 2rem; margin-bottom: 8px;">₮</div>
-                                <div style="font-weight: 600;">USDT</div>
-                                <div style="color: var(--text-secondary); font-size: 0.8rem;">TRC-20</div>
-                            </div>
-                            <div style="text-align: center; padding: 15px; background: rgba(255, 255, 255, 0.05); border-radius: 10px;">
-                                <div style="font-size: 2rem; margin-bottom: 8px;">🔶</div>
-                                <div style="font-weight: 600;">BNB</div>
-                                <div style="color: var(--text-secondary); font-size: 0.8rem;">BSC Network</div>
-                            </div>
-                            <div style="text-align: center; padding: 15px; background: rgba(255, 255, 255, 0.05); border-radius: 10px;">
-                                <div style="font-size: 2rem; margin-bottom: 8px;">◎</div>
-                                <div style="font-weight: 600;">Ripple</div>
-                                <div style="color: var(--text-secondary); font-size: 0.8rem;">XRP Ledger</div>
-                            </div>
-                            <div style="text-align: center; padding: 15px; background: rgba(255, 255, 255, 0.05); border-radius: 10px;">
-                                <div style="font-size: 2rem; margin-bottom: 8px;">◉</div>
-                                <div style="font-weight: 600;">Solana</div>
-                                <div style="color: var(--text-secondary); font-size: 0.8rem;">SOL Network</div>
-                            </div>
-                            <div style="text-align: center; padding: 15px; background: rgba(255, 255, 255, 0.05); border-radius: 10px;">
-                                <div style="font-size: 2rem; margin-bottom: 8px;">🌊</div>
-                                <div style="font-weight: 600;">Sui</div>
-                                <div style="color: var(--text-secondary); font-size: 0.8rem;">Sui Network</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Security Center Section -->
-            <section id="security-section" class="content-section" style="display: none;">
-                <div class="security-grid">
-                    <div class="security-card">
-                        <div class="security-card-header">
-                            <div class="security-icon">🔐</div>
-                            <div>
-                                <h3 class="security-card-title">Multi-Factor Authentication</h3>
-                                <div style="color: var(--success-color); font-size: 0.85rem; font-weight: 600;">✅ ENABLED</div>
-                            </div>
-                        </div>
-                        <p class="security-card-description">
-                            TOTP-based 2FA with backup codes. Compatible with Google Authenticator, Authy, and 1Password.
-                        </p>
-                    </div>
-
-                    <div class="security-card">
-                        <div class="security-card-header">
-                            <div class="security-icon">🔒</div>
-                            <div>
-                                <h3 class="security-card-title">End-to-End Encryption</h3>
-                                <div style="color: var(--success-color); font-size: 0.85rem; font-weight: 600;">✅ ACTIVE</div>
-                            </div>
-                        </div>
-                        <p class="security-card-description">
-                            AES-256 encryption for data at rest, TLS 1.3 for data in transit. Zero-knowledge architecture.
-                        </p>
-                    </div>
-
-                    <div class="security-card">
-                        <div class="security-card-header">
-                            <div class="security-icon">🛡️</div>
-                            <div>
-                                <h3 class="security-card-title">Fraud Detection</h3>
-                                <div style="color: var(--success-color); font-size: 0.85rem; font-weight: 600;">✅ MONITORING</div>
-                            </div>
-                        </div>
-                        <p class="security-card-description">
-                            AI-powered fraud detection monitors unusual login patterns, device changes, and trading behavior.
-                        </p>
-                    </div>
-
-                    <div class="security-card">
-                        <div class="security-card-header">
-                            <div class="security-icon">₿</div>
-                            <div>
-                                <h3 class="security-card-title">Crypto Payment Security</h3>
-                                <div style="color: var(--success-color); font-size: 0.85rem; font-weight: 600;">✅ SECURE</div>
-                            </div>
-                        </div>
-                        <p class="security-card-description">
-                            Multi-signature wallets, automated verification, and blockchain monitoring for all crypto payments.
-                        </p>
-                    </div>
-
-                    <div class="security-card">
-                        <div class="security-card-header">
-                            <div class="security-icon">📱</div>
-                            <div>
-                                <h3 class="security-card-title">Biometric Authentication</h3>
-                                <div style="color: var(--warning-color); font-size: 0.85rem; font-weight: 600;">⚠️ SETUP REQUIRED</div>
-                            </div>
-                        </div>
-                        <p class="security-card-description">
-                            Fingerprint and face recognition for mobile devices. Enhanced security with convenience.
-                        </p>
-                    </div>
-
-                    <div class="security-card">
-                        <div class="security-card-header">
-                            <div class="security-icon">🌐</div>
-                            <div>
-                                <h3 class="security-card-title">Secure API Access</h3>
-                                <div style="color: var(--success-color); font-size: 0.85rem; font-weight: 600;">✅ CONFIGURED</div>
-                            </div>
-                        </div>
-                        <p class="security-card-description">
-                            OAuth 2.0 with PKCE, API key rotation, rate limiting, and IP whitelisting for broker connections.
-                        </p>
+                    <!-- Feature Comparison -->
+                    <div style="margin-top: 40px; overflow-x: auto;">
+                        <table style="width: 100%; border-collapse: collapse; background: var(--bg-card); border-radius: 15px; overflow: hidden;">
+                            <thead>
+                                <tr style="background: rgba(99, 102, 241, 0.1);">
+                                    <th style="padding: 15px; text-align: left; border-bottom: 1px solid var(--border-color);">Feature</th>
+                                    <th style="padding: 15px; text-align: center; border-bottom: 1px solid var(--border-color);">Premium</th>
+                                    <th style="padding: 15px; text-align: center; border-bottom: 1px solid var(--border-color);">Pro</th>
+                                    <th style="padding: 15px; text-align: center; border-bottom: 1px solid var(--border-color);">Enterprise</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="padding: 12px 15px; border-bottom: 1px solid var(--border-color);">Holdings Limit</td>
+                                    <td style="padding: 12px 15px; text-align: center; border-bottom: 1px solid var(--border-color);">10</td>
+                                    <td style="padding: 12px 15px; text-align: center; border-bottom: 1px solid var(--border-color);">100</td>
+                                    <td style="padding: 12px 15px; text-align: center; border-bottom: 1px solid var(--border-color);">Unlimited</td>
+                                    <td style="padding: 12px 15px; text-align: center; border-bottom: 1px solid var(--border-color);">Unlimited</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 12px 15px; border-bottom: 1px solid var(--border-color);">Real-time Data</td>
+                                    <td style="padding: 12px 15px; text-align: center; border-bottom: 1px solid var(--border-color);">❌</td>
+                                    <td style="padding: 12px 15px; text-align: center; border-bottom: 1px solid var(--border-color);">✅</td>
+                                    <td style="padding: 12px 15px; text-align: center; border-bottom: 1px solid var(--border-color);">✅</td>
+                                    <td style="padding: 12px 15px; text-align: center; border-bottom: 1px solid var(--border-color);">✅</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 12px 15px; border-bottom: 1px solid var(--border-color);">Broker APIs</td>
+                                    <td style="padding: 12px 15px; text-align: center; border-bottom: 1px solid var(--border-color);">0</td>
+                                    <td style="padding: 12px 15px; text-align: center; border-bottom: 1px solid var(--border-color);">2</td>
+                                    <td style="padding: 12px 15px; text-align: center; border-bottom: 1px solid var(--border-color);">5</td>
+                                    <td style="padding: 12px 15px; text-align: center; border-bottom: 1px solid var(--border-color);">Unlimited</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 12px 15px; border-bottom: 1px solid var(--border-color);">Users</td>
+                                    <td style="padding: 12px 15px; text-align: center; border-bottom: 1px solid var(--border-color);">1</td>
+                                    <td style="padding: 12px 15px; text-align: center; border-bottom: 1px solid var(--border-color);">1</td>
+                                    <td style="padding: 12px 15px; text-align: center; border-bottom: 1px solid var(--border-color);">5</td>
+                                    <td style="padding: 12px 15px; text-align: center; border-bottom: 1px solid var(--border-color);">Unlimited</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 12px 15px; border-bottom: 1px solid var(--border-color);">2FA Security</td>
+                                    <td style="padding: 12px 15px; text-align: center; border-bottom: 1px solid var(--border-color);">Basic</td>
+                                    <td style="padding: 12px 15px; text-align: center; border-bottom: 1px solid var(--border-color);">✅</td>
+                                    <td style="padding: 12px 15px; text-align: center; border-bottom: 1px solid var(--border-color);">✅</td>
+                                    <td style="padding: 12px 15px; text-align: center; border-bottom: 1px solid var(--border-color);">✅ + SSO</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 12px 15px; border-bottom: 1px solid var(--border-color);">Support</td>
+                                    <td style="padding: 12px 15px; text-align: center; border-bottom: 1px solid var(--border-color);">Community</td>
+                                    <td style="padding: 12px 15px; text-align: center; border-bottom: 1px solid var(--border-color);">Email</td>
+                                    <td style="padding: 12px 15px; text-align: center; border-bottom: 1px solid var(--border-color);">Priority</td>
+                                    <td style="padding: 12px 15px; text-align: center; border-bottom: 1px solid var(--border-color);">Dedicated</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </section>
@@ -1149,7 +197,7 @@
                     <div class="testing-header">
                         <h2 class="testing-title">🧪 How to Test Portfolio Pro</h2>
                         <p style="color: var(--text-secondary); text-align: center;">
-                            Complete testing guide including crypto payment system
+                            Complete testing guide to explore all features and functionality
                         </p>
                     </div>
 
@@ -1158,851 +206,16 @@
                             <div class="step-number">1</div>
                             <h3 class="step-title">Demo Login</h3>
                             <p class="step-description">
-                                Click "Demo Login" or add #demo to URL. Test 2FA with any 6-digit code.
+                                Click "Demo Login" to access the platform with pre-loaded sample data. No registration required.
                             </p>
                         </div>
 
                         <div class="testing-step">
                             <div class="step-number">2</div>
-                            <h3 class="step-title">Test Crypto Payments</h3>
+                            <h3 class="step-title">Explore Dashboard</h3>
                             <p class="step-description">
-                                Go to Crypto Payments section, select cryptocurrency, and test payment flow.
+                                Navigate through sections using the sidebar or keyboard shortcuts (Ctrl+1,2,3,4).
                             </p>
-                        </div>
-
-                        <div class="testing-step">
-                            <div class="step-number">3</div>
-                            <h3 class="step-title">Admin Features</h3>
-                            <p class="step-description">
-                                Test wallet management, transaction verification, and auto-approval settings.
-                            </p>
-                        </div>
-
-                        <div class="testing-step">
-                            <div class="step-number">4</div>
-                            <h3 class="step-title">Portfolio Management</h3>
-                            <p class="step-description">
-                                Add positions, test analytics, risk monitoring, and investment automation.
-                            </p>
-                        </div>
-
-                        <div class="testing-step">
-                            <div class="step-number">5</div>
-                            <h3 class="step-title">Security Testing</h3>
-                            <p class="step-description">
-                                Test all security features including audit trail and compliance monitoring.
-                            </p>
-                        </div>
-
-                        <div class="testing-step">
-                            <div class="step-number">6</div>
-                            <h3 class="step-title">Mobile & Browser</h3>
-                            <p class="step-description">
-                                Test responsive design across all devices and browser compatibility.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Crypto Testing -->
-                    <div style="margin-top: 30px; background: rgba(34, 197, 94, 0.05); border-radius: 15px; padding: 25px; border: 1px solid rgba(34, 197, 94, 0.2);">
-                        <h3 style="margin-bottom: 20px; color: var(--success-color);">₿ Crypto Payment Testing</h3>
-                        
-                        <div class="dashboard-grid">
-                            <div class="metric-card">
-                                <div class="metric-header">
-                                    <span class="metric-title">Test Payment</span>
-                                    <span class="metric-icon">₿</span>
-                                </div>
-                                <div class="metric-value">Ready</div>
-                                <button class="btn btn-primary" style="margin-top: 10px; font-size: 0.8rem;" onclick="testCryptoPayment()">
-                                    Test Bitcoin Payment
-                                </button>
-                            </div>
-
-                            <div class="metric-card">
-                                <div class="metric-header">
-                                    <span class="metric-title">Admin Verification</span>
-                                    <span class="metric-icon">👨‍💼</span>
-                                </div>
-                                <div class="metric-value">Available</div>
-                                <button class="btn btn-primary" style="margin-top: 10px; font-size: 0.8rem;" onclick="testAdminVerification()">
-                                    Test Admin Panel
-                                </button>
-                            </div>
-
-                            <div class="metric-card">
-                                <div class="metric-header">
-                                    <span class="metric-title">Auto Verification</span>
-                                    <span class="metric-icon">🤖</span>
-                                </div>
-                                <div class="metric            <div class="nav-section">
-                <div class="nav-title">Management</div>
-                <div class="nav-item" onclick="showSection('user-management')">
-                    <span class="nav-icon">👥</span>
-                    <span>User Management</span>
-                </div>
-                <div class="nav-item" onclick="showSection('plans')">
-                    <span class="nav-icon">💎</span>
-                    <span>Plans & Billing</span>
-                </div>
-                <div class="nav-item" onclick="showSection('crypto-payments')">
-                    <span class="nav-icon">₿</span>
-                    <span>Crypto Payments</span>
-                </div>
-                <div class="nav-item" onclick="showSection('admin-wallet')">
-                    <span class="nav-icon">🏦</span>
-                    <span>Admin Wallets</span>
-                </div>
-                <div class="nav-item" onclick="showSection('transactions')">
-                    <span class="nav-icon">💳</span>
-                    <span>Transactions</span>
-                </div>
-                <div class="nav-item" onclick="showSection('testing')">
-                    <span class="nav-icon">🧪</span>
-                    <span>Testing Guide</span>
-                </div>
-            </div>
-        </nav>
-
-        <!-- Main Content -->
-        <main class="main-content" id="mainContent">
-            <!-- Header -->
-            <header class="header">
-                <div class="header-left">
-                    <button class="btn btn-secondary" onclick="toggleSidebar()" style="margin-right: 15px;">
-                        <span>☰</span>
-                    </button>
-                    <div>
-                        <h1 class="page-title" id="pageTitle">Portfolio Overview</h1>
-                        <p class="page-subtitle" id="pageSubtitle">Advanced investment management with enterprise security</p>
-                    </div>
-                </div>
-                <div class="header-right">
-                    <div class="search-box">
-                        <span>🔍</span>
-                        <input type="text" placeholder="Search investments, stocks, analytics...">
-                    </div>
-                    <div class="user-menu" onclick="showUserMenu()">
-                        <div class="user-avatar">
-                            JD
-                            <div class="security-badge" title="2FA Enabled"></div>
-                        </div>
-                        <div>
-                            <div style="font-size: 0.9rem; font-weight: 600;">John Doe</div>
-                            <div style="font-size: 0.7rem; color: var(--text-secondary);">Pro Account</div>
-                        </div>
-                        <span>▼</span>
-                    </div>
-                </div>
-            </header>
-
-            <!-- Overview Section -->
-            <section id="overview-section" class="content-section">
-                <div class="dashboard-grid">
-                    <div class="metric-card">
-                        <div class="metric-header">
-                            <span class="metric-title">Total Portfolio Value</span>
-                            <span class="metric-icon">💰</span>
-                        </div>
-                        <div class="metric-value">$124,567.89</div>
-                        <div class="metric-change positive">
-                            <span>↗</span>
-                            <span>+5.67% ($6,789)</span>
-                        </div>
-                    </div>
-
-                    <div class="metric-card">
-                        <div class="metric-header">
-                            <span class="metric-title">Monthly Dividend Income</span>
-                            <span class="metric-icon">💎</span>
-                        </div>
-                        <div class="metric-value">$1,234.56</div>
-                        <div class="metric-change positive">
-                            <span>↗</span>
-                            <span>+12.3% (+$135)</span>
-                        </div>
-                    </div>
-
-                    <div class="metric-card">
-                        <div class="metric-header">
-                            <span class="metric-title">Security Status</span>
-                            <span class="metric-icon">🛡️</span>
-                        </div>
-                        <div class="metric-value" style="color: var(--success-color);">98/100</div>
-                        <div class="metric-change positive">
-                            <span>✅</span>
-                            <span>All checks passed</span>
-                        </div>
-                    </div>
-
-                    <div class="metric-card">
-                        <div class="metric-header">
-                            <span class="metric-title">Active Sessions</span>
-                            <span class="metric-icon">📱</span>
-                        </div>
-                        <div class="metric-value">3</div>
-                        <div class="metric-change">
-                            <span>🔐</span>
-                            <span>All verified</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Crypto Payments Section -->
-            <section id="crypto-payments-section" class="content-section" style="display: none;">
-                <div class="testing-container">
-                    <div class="testing-header">
-                        <h2 class="testing-title">₿ Crypto Payment Gateway</h2>
-                        <p style="color: var(--text-secondary); text-align: center;">
-                            Pay for your subscription using cryptocurrency - Fast, secure, and decentralized
-                        </p>
-                    </div>
-
-                    <!-- Payment Method Selection -->
-                    <div class="dashboard-grid">
-                        <div class="metric-card crypto-card" data-crypto="BTC" onclick="selectCrypto('BTC')">
-                            <div class="metric-header">
-                                <span class="metric-title">Bitcoin</span>
-                                <span class="metric-icon">₿</span>
-                            </div>
-                            <div class="metric-value">BTC</div>
-                            <div class="metric-change">
-                                <span>🔗</span>
-                                <span>Native Bitcoin</span>
-                            </div>
-                        </div>
-
-                        <div class="metric-card crypto-card" data-crypto="ETH" onclick="selectCrypto('ETH')">
-                            <div class="metric-header">
-                                <span class="metric-title">Ethereum</span>
-                                <span class="metric-icon">⟠</span>
-                            </div>
-                            <div class="metric-value">ETH</div>
-                            <div class="metric-change">
-                                <span>🔗</span>
-                                <span>Ethereum Network</span>
-                            </div>
-                        </div>
-
-                        <div class="metric-card crypto-card" data-crypto="USDT" onclick="selectCrypto('USDT')">
-                            <div class="metric-header">
-                                <span class="metric-title">Tether USDT</span>
-                                <span class="metric-icon">₮</span>
-                            </div>
-                            <div class="metric-value">USDT</div>
-                            <div class="metric-change">
-                                <span>🔗</span>
-                                <span>TRC-20 (TRON)</span>
-                            </div>
-                        </div>
-
-                        <div class="metric-card crypto-card" data-crypto="BNB" onclick="selectCrypto('BNB')">
-                            <div class="metric-header">
-                                <span class="metric-title">Binance Coin</span>
-                                <span class="metric-icon">🔶</span>
-                            </div>
-                            <div class="metric-value">BNB</div>
-                            <div class="metric-change">
-                                <span>🔗</span>
-                                <span>BSC Network</span>
-                            </div>
-                        </div>
-
-                        <div class="metric-card crypto-card" data-crypto="XRP" onclick="selectCrypto('XRP')">
-                            <div class="metric-header">
-                                <span class="metric-title">Ripple</span>
-                                <span class="metric-icon">◎</span>
-                            </div>
-                            <div class="metric-value">XRP</div>
-                            <div class="metric-change">
-                                <span>🔗</span>
-                                <span>XRP Ledger</span>
-                            </div>
-                        </div>
-
-                        <div class="metric-card crypto-card" data-crypto="SOL" onclick="selectCrypto('SOL')">
-                            <div class="metric-header">
-                                <span class="metric-title">Solana</span>
-                                <span class="metric-icon">◉</span>
-                            </div>
-                            <div class="metric-value">SOL</div>
-                            <div class="metric-change">
-                                <span>🔗</span>
-                                <span>Solana Network</span>
-                            </div>
-                        </div>
-
-                        <div class="metric-card crypto-card" data-crypto="SUI" onclick="selectCrypto('SUI')">
-                            <div class="metric-header">
-                                <span class="metric-title">Sui Network</span>
-                                <span class="metric-icon">🌊</span>
-                            </div>
-                            <div class="metric-value">SUI</div>
-                            <div class="metric-change">
-                                <span>🔗</span>
-                                <span>Sui Blockchain</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Payment Form -->
-                    <div id="paymentForm" class="payment-form" style="display: none; margin-top: 30px;">
-                        <div style="background: var(--bg-card); border-radius: 20px; padding: 30px; border: 1px solid var(--border-color);">
-                            <div class="payment-header">
-                                <h3 style="margin-bottom: 20px; color: var(--primary-color);">
-                                    <span id="selectedCryptoIcon">₿</span>
-                                    Pay with <span id="selectedCryptoName">Bitcoin</span>
-                                </h3>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="form-label">Select Plan</label>
-                                <select class="form-select" id="planSelect" onchange="updatePaymentAmount()">
-                                    <option value="">Choose your plan</option>
-                                    <option value="premium" data-price="19">Premium - $19/month</option>
-                                    <option value="pro" data-price="49">Pro - $49/month</option>
-                                    <option value="enterprise" data-price="199">Enterprise - $199/month</option>
-                                </select>
-                            </div>
-
-                            <div class="payment-details" id="paymentDetails" style="display: none;">
-                                <div class="payment-summary">
-                                    <div style="display: flex; justify-content: space-between; margin-bottom: 15px; padding: 15px; background: rgba(255,255,255,0.05); border-radius: 10px;">
-                                        <span>Plan:</span>
-                                        <span id="selectedPlan" style="font-weight: 600;"></span>
-                                    </div>
-                                    <div style="display: flex; justify-content: space-between; margin-bottom: 15px; padding: 15px; background: rgba(255,255,255,0.05); border-radius: 10px;">
-                                        <span>Amount (USD):</span>
-                                        <span id="usdAmount" style="font-weight: 600;"></span>
-                                    </div>
-                                    <div style="display: flex; justify-content: space-between; margin-bottom: 20px; padding: 15px; background: rgba(34, 197, 94, 0.1); border-radius: 10px; border: 1px solid rgba(34, 197, 94, 0.3);">
-                                        <span>Amount (<span id="cryptoSymbol">BTC</span>):</span>
-                                        <span id="cryptoAmount" style="font-weight: 600; color: var(--success-color);"></span>
-                                    </div>
-                                </div>
-
-                                <div class="wallet-address">
-                                    <label class="form-label">Send <span id="cryptoSymbol2">BTC</span> to this address:</label>
-                                    <div style="display: flex; gap: 10px;">
-                                        <input type="text" class="form-input" id="walletAddress" readonly style="flex: 1;">
-                                        <button class="btn btn-secondary" onclick="copyWalletAddress()">📋 Copy</button>
-                                    </div>
-                                    <div style="margin-top: 10px; text-align: center;">
-                                        <div id="qrCode" style="background: white; padding: 20px; border-radius: 10px; display: inline-block; margin: 15px 0;">
-                                            <div style="width: 150px; height: 150px; background: #000; color: white; display: flex; align-items: center; justify-content: center; font-size: 0.8rem;">QR Code</div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="form-label">Transaction ID (Hash)</label>
-                                    <input type="text" class="form-input" id="txId" placeholder="Enter transaction hash after payment">
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="form-label">Your Email</label>
-                                    <input type="email" class="form-input" id="userEmail" placeholder="your@email.com" required>
-                                </div>
-
-                                <button class="btn btn-primary" style="width: 100%; padding: 15px; font-size: 1.1rem;" onclick="submitPayment()">
-                                    🚀 Submit Payment Verification
-                                </button>
-
-                                <div style="margin-top: 20px; padding: 15px; background: rgba(245, 158, 11, 0.1); border-radius: 10px; border: 1px solid rgba(245, 158, 11, 0.3);">
-                                    <h4 style="color: var(--warning-color); margin-bottom: 10px;">⚠️ Important Instructions:</h4>
-                                    <ul style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6;">
-                                        <li>Send the exact amount shown above</li>
-                                        <li>Use the correct network (check cryptocurrency details)</li>
-                                        <li>Wait for transaction confirmation (usually 1-3 confirmations)</li>
-                                        <li>Enter the transaction hash in the field above</li>
-                                        <li>Admin will verify and activate your subscription within 1-24 hours</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Admin Wallet Management Section -->
-            <section id="admin-wallet-section" class="content-section" style="display: none;">
-                <div class="testing-container">
-                    <div class="testing-header">
-                        <h2 class="testing-title">🏦 Admin Wallet Management</h2>
-                        <p style="color: var(--text-secondary); text-align: center;">
-                            Configure cryptocurrency wallet addresses for receiving payments
-                        </p>
-                    </div>
-
-                    <div class="table-container">
-                        <div class="table-header">
-                            <h3 class="table-title">💳 Configured Wallets</h3>
-                            <div class="table-actions">
-                                <button class="btn btn-secondary" onclick="showModal('add-wallet')">Add Wallet</button>
-                                <button class="btn btn-primary" onclick="validateAllWallets()">Validate All</button>
-                            </div>
-                        </div>
-                        <table class="data-table">
-                            <thead>
-                                <tr>
-                                    <th>Cryptocurrency</th>
-                                    <th>Network</th>
-                                    <th>Wallet Address</th>
-                                    <th>Status</th>
-                                    <th>Last Updated</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody id="walletTableBody">
-                                <tr>
-                                    <td><strong style="color: #f7931a;">₿ Bitcoin</strong></td>
-                                    <td>Native Bitcoin</td>
-                                    <td><code>bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh</code></td>
-                                    <td><span class="api-status api-connected">✅ Active</span></td>
-                                    <td>2 hours ago</td>
-                                    <td>
-                                        <button class="btn btn-secondary" style="padding: 5px 10px; font-size: 0.8rem;" onclick="editWallet('BTC')">Edit</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><strong style="color: #627eea;">⟠ Ethereum</strong></td>
-                                    <td>Ethereum Network</td>
-                                    <td><code>0x742d35Cc6634C0532925a3b8D4C9db96DfB97d4F</code></td>
-                                    <td><span class="api-status api-connected">✅ Active</span></td>
-                                    <td>3 hours ago</td>
-                                    <td>
-                                        <button class="btn btn-secondary" style="padding: 5px 10px; font-size: 0.8rem;" onclick="editWallet('ETH')">Edit</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><strong style="color: #26a17b;">₮ USDT</strong></td>
-                                    <td>TRC-20 (TRON)</td>
-                                    <td><code>TLPuPj4QfbCDpg3FfJJRKvzQKj1E6yYYvg</code></td>
-                                    <td><span class="api-status api-connected">✅ Active</span></td>
-                                    <td>1 day ago</td>
-                                    <td>
-                                        <button class="btn btn-secondary" style="padding: 5px 10px; font-size: 0.8rem;" onclick="editWallet('USDT')">Edit</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><strong style="color: #f3ba2f;">🔶 Binance Coin</strong></td>
-                                    <td>BSC Network</td>
-                                    <td><code>bnb1grpf0955h0ykzq3ar5nmum7y6gdfl6lxfn46h2</code></td>
-                                    <td><span class="api-status api-pending">⏳ Pending</span></td>
-                                    <td>Just added</td>
-                                    <td>
-                                        <button class="btn btn-secondary" style="padding: 5px 10px; font-size: 0.8rem;" onclick="editWallet('BNB')">Edit</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><strong style="color: #0085c3;">◎ Ripple</strong></td>
-                                    <td>XRP Ledger</td>
-                                    <td><code>rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH</code></td>
-                                    <td><span class="api-status api-connected">✅ Active</span></td>
-                                    <td>2 days ago</td>
-                                    <td>
-                                        <button class="btn btn-secondary" style="padding: 5px 10px; font-size: 0.8rem;" onclick="editWallet('XRP')">Edit</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><strong style="color: #9945ff;">◉ Solana</strong></td>
-                                    <td>Solana Network</td>
-                                    <td><code>9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM</code></td>
-                                    <td><span class="api-status api-connected">✅ Active</span></td>
-                                    <td>1 week ago</td>
-                                    <td>
-                                        <button class="btn btn-secondary" style="padding: 5px 10px; font-size: 0.8rem;" onclick="editWallet('SOL')">Edit</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><strong style="color: #6fbcf0;">🌊 Sui</strong></td>
-                                    <td>Sui Network</td>
-                                    <td><code>0x02a212de6a9dfa3a69e22387acfbafbb1a9e591bd9d636e7895dcfc8de05f331</code></td>
-                                    <td><span class="api-status api-disconnected">❌ Not Set</span></td>
-                                    <td>Never</td>
-                                    <td>
-                                        <button class="btn btn-primary" style="padding: 5px 10px; font-size: 0.8rem;" onclick="editWallet('SUI')">Configure</button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <!-- Wallet Statistics -->
-                    <div class="dashboard-grid">
-                        <div class="metric-card">
-                            <div class="metric-header">
-                                <span class="metric-title">Active Wallets</span>
-                                <span class="metric-icon">💳</span>
-                            </div>
-                            <div class="metric-value">6/7</div>
-                            <div class="metric-change positive">
-                                <span>✅</span>
-                                <span>85.7% configured</span>
-                            </div>
-                        </div>
-
-                        <div class="metric-card">
-                            <div class="metric-header">
-                                <span class="metric-title">Total Transactions</span>
-                                <span class="metric-icon">📊</span>
-                            </div>
-                            <div class="metric-value">127</div>
-                            <div class="metric-change positive">
-                                <span>↗</span>
-                                <span>+23 this month</span>
-                            </div>
-                        </div>
-
-                        <div class="metric-card">
-                            <div class="metric-header">
-                                <span class="metric-title">Pending Verification</span>
-                                <span class="metric-icon">⏳</span>
-                            </div>
-                            <div class="metric-value">5</div>
-                            <div class="metric-change warning">
-                                <span>⚠️</span>
-                                <span>Needs attention</span>
-                            </div>
-                        </div>
-
-                        <div class="metric-card">
-                            <div class="metric-header">
-                                <span class="metric-title">Auto-Verification</span>
-                                <span class="metric-icon">🤖</span>
-                            </div>
-                            <div class="metric-value" style="color: var(--success-color);">Enabled</div>
-                            <div class="metric-change positive">
-                                <span>⚡</span>
-                                <span>Fast processing</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Transaction Management Section -->
-            <section id="transactions-section" class="content-section" style="display: none;">
-                <div class="testing-container">
-                    <div class="testing-header">
-                        <h2 class="testing-title">💳 Transaction Management</h2>
-                        <p style="color: var(--text-secondary); text-align: center;">
-                            Monitor and verify cryptocurrency payments and subscriptions
-                        </p>
-                    </div>
-
-                    <!-- Transaction Filters -->
-                    <div class="dashboard-grid" style="margin-bottom: 25px;">
-                        <div class="metric-card">
-                            <div class="metric-header">
-                                <span class="metric-title">Pending Verification</span>
-                                <span class="metric-icon">⏳</span>
-                            </div>
-                            <div class="metric-value">5</div>
-                            <button class="btn btn-primary" style="margin-top: 10px; font-size: 0.8rem;" onclick="filterTransactions('pending')">
-                                View Pending
-                            </button>
-                        </div>
-
-                        <div class="metric-card">
-                            <div class="metric-header">
-                                <span class="metric-title">Verified Today</span>
-                                <span class="metric-icon">✅</span>
-                            </div>
-                            <div class="metric-value">12</div>
-                            <button class="btn btn-secondary" style="margin-top: 10px; font-size: 0.8rem;" onclick="filterTransactions('verified')">
-                                View Verified
-                            </button>
-                        </div>
-
-                        <div class="metric-card">
-                            <div class="metric-header">
-                                <span class="metric-title">Failed/Rejected</span>
-                                <span class="metric-icon">❌</span>
-                            </div>
-                            <div class="metric-value">2</div>
-                            <button class="btn btn-secondary" style="margin-top: 10px; font-size: 0.8rem;" onclick="filterTransactions('failed')">
-                                View Failed
-                            </button>
-                        </div>
-
-                        <div class="metric-card">
-                            <div class="metric-header">
-                                <span class="metric-title">Auto-Verified</span>
-                                <span class="metric-icon">🤖</span>
-                            </div>
-                            <div class="metric-value">89%</div>
-                            <div class="metric-change positive">
-                                <span>⚡</span>
-                                <span>High automation</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Transactions Table -->
-                    <div class="table-container">
-                        <div class="table-header">
-                            <h3 class="table-title">📋 Recent Transactions</h3>
-                            <div class="table-actions">
-                                <select class="form-select" style="width: auto; margin-right: 10px;">
-                                    <option value="all">All Transactions</option>
-                                    <option value="pending">Pending Verification</option>
-                                    <option value="verified">Verified</option>
-                                    <option value="failed">Failed/Rejected</option>
-                                </select>
-                                <button class="btn btn-secondary" onclick="exportTransactions()">Export CSV</button>
-                                <button class="btn btn-primary" onclick="refreshTransactions()">🔄 Refresh</button>
-                            </div>
-                        </div>
-                        <table class="data-table">
-                            <thead>
-                                <tr>
-                                    <th>User</th>
-                                    <th>Plan</th>
-                                    <th>Cryptocurrency</th>
-                                    <th>Amount</th>
-                                    <th>TX ID</th>
-                                    <th>Status</th>
-                                    <th>Date</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody id="transactionTableBody">
-                                <tr>
-                                    <td>
-                                        <div style="display: flex; align-items: center; gap: 8px;">
-                                            <div class="user-avatar" style="width: 24px; height: 24px; font-size: 0.7rem;">JD</div>
-                                            <div>
-                                                <strong>john.doe@email.com</strong>
-                                                <div style="font-size: 0.8rem; color: var(--text-secondary);">ID: USR001</div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td><span class="role-indicator role-manager">Pro Plan</span></td>
-                                    <td>₿ Bitcoin</td>
-                                    <td>0.00123 BTC<br><span style="font-size: 0.8rem; color: var(--text-secondary);">($49.00)</span></td>
-                                    <td>
-                                        <code style="font-size: 0.7rem;">a1b2c3d4e5f6...</code>
-                                        <button class="btn btn-secondary" style="padding: 2px 6px; font-size: 0.7rem; margin-left: 5px;" onclick="viewTransaction('a1b2c3d4e5f6')">View</button>
-                                    </td>
-                                    <td><span class="api-status api-pending">⏳ Pending</span></td>
-                                    <td>2 hours ago</td>
-                                    <td>
-                                        <button class="btn btn-primary" style="padding: 4px 8px; font-size: 0.7rem; margin: 1px;" onclick="verifyTransaction('tx001')">✅ Verify</button>
-                                        <button class="btn btn-secondary" style="padding: 4px 8px; font-size: 0.7rem; margin: 1px;" onclick="rejectTransaction('tx001')">❌ Reject</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div style="display: flex; align-items: center; gap: 8px;">
-                                            <div class="user-avatar" style="width: 24px; height: 24px; font-size: 0.7rem;">SM</div>
-                                            <div>
-                                                <strong>sarah.m@email.com</strong>
-                                                <div style="font-size: 0.8rem; color: var(--text-secondary);">ID: USR002</div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td><span class="role-indicator role-user">Premium</span></td>
-                                    <td>    </style>
-</head>
-<body>
-    <!-- Security Banner -->
-    <div class="security-banner">
-        <span class="security-icon">🔒</span>
-        <span>Bank-grade security • End-to-end encryption • SOC 2 Type II compliant • 99.9% uptime SLA</span>
-    </div>
-
-    <!-- Authentication Overlay -->
-    <div class="auth-overlay" id="authOverlay">
-        <div class="auth-container">
-            <div class="auth-header">
-                <div class="auth-logo">🛡️</div>
-                <h2 class="auth-title">Secure Login</h2>
-                <p class="auth-subtitle">Enter your credentials to access Portfolio Pro</p>
-            </div>
-
-            <form class="auth-form" id="loginForm">
-                <div class="form-group">
-                    <label class="form-label">Email Address</label>
-                    <input type="email" class="form-input" placeholder="your@email.com" required>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">Password</label>
-                    <input type="password" class="form-input" placeholder="Enter your password" required>
-                </div>
-
-                <div class="form-group">
-                    <label style="display: flex; align-items: center; gap: 10px; font-size: 0.9rem;">
-                        <input type="checkbox">
-                        <span>Remember this device for 30 days</span>
-                    </label>
-                </div>
-
-                <button type="submit" class="btn btn-primary" style="width: 100%; margin-bottom: 15px;">
-                    🔐 Secure Login
-                </button>
-
-                <div style="text-align: center;">
-                    <a href="#" style="color: var(--primary-color); text-decoration: none; font-size: 0.9rem;">
-                        Forgot password?
-                    </a>
-                </div>
-            </form>
-
-            <!-- MFA Container (hidden initially) -->
-            <div class="mfa-container" id="mfaContainer" style="display: none;">
-                <h3 style="text-align: center; margin-bottom: 15px; color: var(--primary-color);">
-                    🔐 Two-Factor Authentication
-                </h3>
-                <p style="text-align: center; margin-bottom: 20px; color: var(--text-secondary); font-size: 0.9rem;">
-                    Enter the 6-digit code from your authenticator app
-                </p>
-                
-                <div class="mfa-code-input">
-                    <input type="text" class="mfa-digit" maxlength="1" pattern="[0-9]">
-                    <input type="text" class="mfa-digit" maxlength="1" pattern="[0-9]">
-                    <input type="text" class="mfa-digit" maxlength="1" pattern="[0-9]">
-                    <input type="text" class="mfa-digit" maxlength="1" pattern="[0-9]">
-                    <input type="text" class="mfa-digit" maxlength="1" pattern="[0-9]">
-                    <input type="text" class="mfa-digit" maxlength="1" pattern="[0-9]">
-                </div>
-
-                <button class="btn btn-primary" style="width: 100%; margin-top: 15px;" onclick="verifyMFA()">
-                    ✅ Verify Code
-                </button>
-
-                <div style="text-align: center; margin-top: 15px;">
-                    <a href="#" style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">
-                        Didn't receive code? Resend
-                    </a>
-                </div>
-            </div>
-
-            <div class="security-features">
-                <div class="security-feature">
-                    <span>🔒</span>
-                    <span>256-bit Encryption</span>
-                </div>
-                <div class="security-feature">
-                    <span>🛡️</span>
-                    <span>2FA Protected</span>
-                </div>
-                <div class="security-feature">
-                    <span>🔐</span>
-                    <span>Zero-Trust Security</span>
-                </div>
-                <div class="security-feature">
-                    <span>📱</span>
-                    <span>Biometric Login</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="app-container">
-        <!-- Plan Badge -->
-        <div class="plan-badge plan-pro">PRO PLAN</div>
-
-        <!-- Sidebar -->
-        <nav class="sidebar" id="sidebar">
-            <div class="logo">
-                <div class="logo-icon">📊</div>
-                <div class="logo-text">Portfolio Pro</div>
-                <div class="plan-indicator plan-pro">✨</div>
-            </div>
-
-            <!-- Security Status -->
-            <div class="security-status">
-                <div class="security-level">
-                    <span>Security Score</span>
-                    <span class="security-score">98/100</span>
-                </div>
-                <div style="font-size: 0.8rem; color: var(--text-secondary);">
-                    🟢 All systems secure
-                </div>
-            </div>
-
-            <div class="nav-section">
-                <div class="nav-title">Dashboard</div>
-                <div class="nav-item active" onclick="showSection('overview')">
-                    <span class="nav-icon">🏠</span>
-                    <span>Overview</span>
-                </div>
-                <div class="nav-item" onclick="showSection('portfolio')">
-                    <span class="nav-icon">💼</span>
-                    <span>Portfolio</span>
-                </div>
-                <div class="nav-item" onclick="showSection('analytics')">
-                    <span class="nav-icon">📈</span>
-                    <span>Analytics</span>
-                </div>
-                <div class="nav-item" onclick="showSection('risk-monitor')">
-                    <span class="nav-icon">⚠️</span>
-                    <span>Risk Monitor</span>
-                    <span class="badge">3</span>
-                </div>
-            </div>
-
-            <div class="nav-section">
-                <div class="nav-title">Investment</div>
-                <div class="nav-item" onclick="showSection('schedule')">
-                    <span class="nav-icon">📅</span>
-                    <span>Investment Schedule</span>
-                </div>
-                <div class="nav-item" onclick="showSection('automation')">
-                    <span class="nav-icon">🤖</span>
-                    <span>Automation</span>
-                </div>
-                <div class="nav-item" onclick="showSection('compound-growth')">
-                    <span class="nav-icon">🚀</span>
-                    <span>Growth Modeling</span>
-                </div>
-            </div>
-
-            <div class="nav-section">
-                <div class="nav-title">Integration</div>
-                <div class="nav-item" onclick="showSection('brokers')">
-                    <span class="nav-icon">🔗</span>
-                    <span>Broker APIs</span>
-                </div>
-                <div class="nav-item" onclick="showSection('import-export')">
-                    <span class="nav-icon">💾</span>
-                    <span>Import/Export</span>
-                </div>
-            </div>
-
-            <div class="nav-section">
-                <div class="nav-title">Security</div>
-                <div class="nav-item" onclick="showSection('security')">
-                    <span class="nav-icon">🔒</span>
-                    <span>Security Center</span>
-                </div>
-                <div class="nav-item" onclick="showSection('audit')">
-                    <span class="nav-icon">📋</span>
-                    <span>Audit Trail</span>
-                </div>
-                <div class="nav-item locked">
-                    <span class="nav-icon">🏛️</span>
-                    <span>Compliance</span>
-                </div>
-            </div>
-
-            <div class="nav-section">
-                <div class="nav-title">Management</div>
-                <div class="nav-item" onclick="showSection('user-management')">
-                    <span class="nav-icon">👥</span>
-                    <span>User Management</span>
-                </div>
-                <div class="nav-item" onclick="showSection('plans')">
-                    <span class="nav-icon">💎</span>
-                    <span>Plans & Billing</span>
-                </div>
-                <div class="nav-item" onclick="showSection('testing')">
-                    <span class="nav-icon">🧪</span>
-                    <span>Testing Guide</span>
-                </div>
             </div>
         </nav>
 
@@ -2521,6 +734,231 @@
                             <h3 class="step-title">Explore Dashboard</h3>
                             <p class="step-description">
                                 Navigate through sections using the sidebar or keyboard shortcuts (Ctrl+1,2,3,4).
+                            </p>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content" id="mainContent">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-left">
+                    <button class="btn btn-secondary" onclick="toggleSidebar()" style="margin-right: 15px;">
+                        <span>☰</span>
+                    </button>
+                    <div>
+                        <h1 class="page-title" id="pageTitle">Portfolio Overview</h1>
+                        <p class="page-subtitle" id="pageSubtitle">Advanced investment management with enterprise security</p>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div class="search-box">
+                        <span>🔍</span>
+                        <input type="text" placeholder="Search investments, stocks, analytics...">
+                    </div>
+                    <div class="user-menu" onclick="showUserMenu()">
+                        <div class="user-avatar">
+                            JD
+                            <div class="security-badge" title="2FA Enabled"></div>
+                        </div>
+                        <div>
+                            <div style="font-size: 0.9rem; font-weight: 600;">John Doe</div>
+                            <div style="font-size: 0.7rem; color: var(--text-secondary);">Pro Account</div>
+                        </div>
+                        <span>▼</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Overview Section -->
+            <section id="overview-section" class="content-section">
+                <div class="dashboard-grid">
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <span class="metric-title">Total Portfolio Value</span>
+                            <span class="metric-icon">💰</span>
+                        </div>
+                        <div class="metric-value">$124,567.89</div>
+                        <div class="metric-change positive">
+                            <span>↗</span>
+                            <span>+5.67% ($6,789)</span>
+                        </div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <span class="metric-title">Monthly Dividend Income</span>
+                            <span class="metric-icon">💎</span>
+                        </div>
+                        <div class="metric-value">$1,234.56</div>
+                        <div class="metric-change positive">
+                            <span>↗</span>
+                            <span>+12.3% (+$135)</span>
+                        </div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <span class="metric-title">Security Status</span>
+                            <span class="metric-icon">🛡️</span>
+                        </div>
+                        <div class="metric-value" style="color: var(--success-color);">98/100</div>
+                        <div class="metric-change positive">
+                            <span>✅</span>
+                            <span>All checks passed</span>
+                        </div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <span class="metric-title">Active Sessions</span>
+                            <span class="metric-icon">📱</span>
+                        </div>
+                        <div class="metric-value">3</div>
+                        <div class="metric-change">
+                            <span>🔐</span>
+                            <span>All verified</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Security Center Section -->
+            <section id="security-section" class="content-section" style="display: none;">
+                <div class="security-grid">
+                    <div class="security-card">
+                        <div class="security-card-header">
+                            <div class="security-icon">🔐</div>
+                            <div>
+                                <h3 class="security-card-title">Multi-Factor Authentication</h3>
+                                <div style="color: var(--success-color); font-size: 0.85rem; font-weight: 600;">✅ ENABLED</div>
+                            </div>
+                        </div>
+                        <p class="security-card-description">
+                            TOTP-based 2FA with backup codes. Compatible with Google Authenticator, Authy, and 1Password.
+                        </p>
+                    </div>
+
+                    <div class="security-card">
+                        <div class="security-card-header">
+                            <div class="security-icon">🔒</div>
+                            <div>
+                                <h3 class="security-card-title">End-to-End Encryption</h3>
+                                <div style="color: var(--success-color); font-size: 0.85rem; font-weight: 600;">✅ ACTIVE</div>
+                            </div>
+                        </div>
+                        <p class="security-card-description">
+                            AES-256 encryption for data at rest, TLS 1.3 for data in transit. Zero-knowledge architecture.
+                        </p>
+                    </div>
+
+                    <div class="security-card">
+                        <div class="security-card-header">
+                            <div class="security-icon">🛡️</div>
+                            <div>
+                                <h3 class="security-card-title">Fraud Detection</h3>
+                                <div style="color: var(--success-color); font-size: 0.85rem; font-weight: 600;">✅ MONITORING</div>
+                            </div>
+                        </div>
+                        <p class="security-card-description">
+                            AI-powered fraud detection monitors unusual login patterns, device changes, and trading behavior.
+                        </p>
+                    </div>
+
+                    <div class="security-card">
+                        <div class="security-card-header">
+                            <div class="security-icon">📱</div>
+                            <div>
+                                <h3 class="security-card-title">Biometric Authentication</h3>
+                                <div style="color: var(--warning-color); font-size: 0.85rem; font-weight: 600;">⚠️ SETUP REQUIRED</div>
+                            </div>
+                        </div>
+                        <p class="security-card-description">
+                            Fingerprint and face recognition for mobile devices. Enhanced security with convenience.
+                        </p>
+                    </div>
+
+                    <div class="security-card">
+                        <div class="security-card-header">
+                            <div class="security-icon">🌐</div>
+                            <div>
+                                <h3 class="security-card-title">Secure API Access</h3>
+                                <div style="color: var(--success-color); font-size: 0.85rem; font-weight: 600;">✅ CONFIGURED</div>
+                            </div>
+                        </div>
+                        <p class="security-card-description">
+                            OAuth 2.0 with PKCE, API key rotation, rate limiting, and IP whitelisting for broker connections.
+                        </p>
+                    </div>
+
+                    <div class="security-card">
+                        <div class="security-card-header">
+                            <div class="security-icon">📊</div>
+                            <div>
+                                <h3 class="security-card-title">Security Monitoring</h3>
+                                <div style="color: var(--success-color); font-size: 0.85rem; font-weight: 600;">✅ 24/7 ACTIVE</div>
+                            </div>
+                        </div>
+                        <p class="security-card-description">
+                            Real-time security monitoring with SIEM integration, automated alerts, and incident response.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Security Settings -->
+                <div class="testing-container">
+                    <div class="testing-header">
+                        <h2 class="testing-title">🔒 Security Settings</h2>
+                        <p style="color: var(--text-secondary); text-align: center;">
+                            Configure your security preferences and review active protections
+                        </p>
+                    </div>
+
+                    <div class="dashboard-grid">
+                        <div class="metric-card">
+                            <div class="metric-header">
+                                <span class="metric-title">Session Timeout</span>
+                                <span class="metric-icon">⏰</span>
+                            </div>
+                            <div class="metric-value">30 min</div>
+                            <button class="btn btn-secondary" style="margin-top: 10px; font-size: 0.8rem;">Configure</button>
+                        </div>
+
+                        <div class="metric-card">
+                            <div class="metric-header">
+                                <span class="metric-title">Login Notifications</span>
+                                <span class="metric-icon">📧</span>
+                            </div>
+                            <div class="metric-value" style="color: var(--success-color);">Enabled</div>
+                            <button class="btn btn-secondary" style="margin-top: 10px; font-size: 0.8rem;">Settings</button>
+                        </div>
+
+                        <div class="metric-card">
+                            <div class="metric-header">
+                                <span class="metric-title">Device Trust</span>
+                                <span class="metric-icon">📱</span>
+                            </div>
+                            <div class="metric-value">3 devices</div>
+                            <button class="btn btn-secondary" style="margin-top: 10px; font-size: 0.8rem;">Manage</button>
+                        </div>
+
+                        <div class="metric-card">
+                            <div class="metric-header">
+                                <span class="metric-title">Data Backup</span>
+                                <span class="metric-icon">💾</span>
+                            </div>
+                            <div class="metric-value" style="color: var(--success-color);">Daily</div>
+                            <button class="btn btn-secondary" style="margin-top: 10px; font-size: 0.8rem;">Configure</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Audit Trail Section -->
+            <section id="audit-section" class="content-section" style="display: none;">
+                <div class="testing-container">
+                    <div class="testing-header">
+                        <h2 class="testing-title">📋 Security Audit Trail</h2>
                             </p>
                         </div>
 
